@@ -1,0 +1,101 @@
+[
+    {
+      "id": 1,
+      "name": "bulbasaur",
+      "image": [
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"
+      ],
+      "Vida": 45,
+      "Ataque": 49,
+      "Defensa": 49,
+      "Velocidad": 45,
+      "Altura": 7,
+      "Peso": 69,
+      "Type": [
+        "grass",
+        "poison"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ivysaur",
+      "image": [
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/2.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png"
+      ],
+      "Vida": 60,
+      "Ataque": 62,
+      "Defensa": 63,
+      "Velocidad": 60,
+      "Altura": 10,
+      "Peso": 130,
+      "Type": [
+        "grass",
+        "poison"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "venusaur",
+      "image": [
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/3.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/3.png"
+      ],
+      "Vida": 80,
+      "Ataque": 82,
+      "Defensa": 83,
+      "Velocidad": 80,
+      "Altura": 20,
+      "Peso": 1000,
+      "Type": [
+        "grass",
+        "poison"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "charmander",
+      "image": [
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/4.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png"
+      ],
+      "Vida": 39,
+      "Ataque": 52,
+      "Defensa": 43,
+      "Velocidad": 65,
+      "Altura": 6,
+      "Peso": 85,
+      "Type": [
+        "fire"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "charmeleon",
+      "image": [
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/5.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/5.png"
+      ],
+      "Vida": 58,
+      "Ataque": 64,
+      "Defensa": 58,
+      "Velocidad": 80,
+      "Altura": 11,
+      "Peso": 190,
+      "Type": [
+        "fire"
+      ]
+    }
+    
+]
