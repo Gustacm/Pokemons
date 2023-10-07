@@ -17,7 +17,8 @@ const Navbar = () => {
 
   const handleName = (e) => {
     const inputValue = e.target.value;
-    setState({ ...state, name: inputValue });
+
+    setState({ ...state, name: inputValue.toLowerCase() });
     handleValidationName(state, inputValue, setError);
   };
 

@@ -1,6 +1,4 @@
 
-//  * Función que valida el name
-
 const handleValidationName = (state, name, setError) => {
   const nameRegex = /^[A-Za-z\s]+$/; 
   const errors = []; 

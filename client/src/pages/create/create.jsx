@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getType } from '../../redux/actions/actions';
+import { getType, postPokemons } from '../../redux/actions/actions';
 
-
+import Delete from './handlers/handleDeleteType';
+import Cambios from './handlers/handleCambios';
 
 
 const CreatePokemon = () => {
@@ -13,9 +14,15 @@ const CreatePokemon = () => {
     dispatch(getType());
   }, [dispatch]);
 
+
+ const handleTipoChange = (e) => {
+  Cambios(e, pokemonData, setPokemonData, errors, setErrors, Img,SetImg);
+};
+
+  
   const [pokemonData, setPokemonData] = useState({
     nombre: '',
-    imagen: '',
+    imagen: 'https://w0.peakpx.com/wallpaper/740/298/HD-wallpaper-pokemon-game-poke-ball-red-simplistic.jpg',
     vida: '1',
     ataque: '1',
     defensa: '1',
@@ -24,62 +31,43 @@ const CreatePokemon = () => {
     peso: '1',
     tipos: [],
   });
-
   const [errors, setErrors] = useState({
-    nombre: '',
+    nombre: '  ',
     imagen: '',
+    tipos: '  ',
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPokemonData({
-      ...pokemonData,
-      [name]: value,
-    });
+  const [Img,SetImg] = useState([])
 
-    // Validaciones en tiempo real
-    const newErrors = { ...errors };
-
-    if (name === 'nombre' && !value.trim()) {
-      newErrors.nombre = 'El nombre es obligatorio';
-    } else {
-      newErrors.nombre = '';
-    }
-
-    if (name === 'imagen' && !value.trim()) {
-      newErrors.imagen = 'La imagen es obligatoria';
-    } else {
-      newErrors.imagen = '';
-    }
-
-    setErrors(newErrors);
+  const convercion = {
+    nombre: pokemonData.nombre.toLowerCase(),
+    imagen: pokemonData.imagen,
+    vida: pokemonData.vida,
+    ataque: pokemonData.ataque,
+    defensa: pokemonData.defensa,
+    velocidad: pokemonData.velocidad,
+    altura: pokemonData.altura,
+    peso: pokemonData.peso,
+    type: [...pokemonData.tipos], 
   };
-
-  const handleTipoChange = (e) => {
-    const { options } = e.target;
-    const selectedTypes = Array.from(options)
-      .filter((option) => option.selected)
-      .map((option) => option.value);
-
-    setPokemonData({
-      ...pokemonData,
-      tipos: selectedTypes,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí puedes realizar acciones con los datos del formulario, como enviarlos al servidor
-    console.log('Datos del Pokémon:', pokemonData);
-    // También puedes realizar validaciones aquí antes de enviar los datos al servidor
-  };
+  
+  
 
   const isSubmitDisabled = Object.values(errors).some((error) => error !== '');
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    postPokemons(convercion)
+  
+    console.log(convercion);
+  };
+
 
   return (
     <div>
       <h2>Crear Nuevo Pokémon</h2>
       <form onSubmit={handleSubmit}>
+        <img src={pokemonData.imagen} alt="pokemon" width="200" height="200" />
+
         <div>
           <label htmlFor="nombre">Nombre:</label>
           <input
@@ -87,7 +75,7 @@ const CreatePokemon = () => {
             id="nombre"
             name="nombre"
             value={pokemonData.nombre}
-            onChange={handleInputChange}
+            onChange={handleTipoChange}
           />
           {errors.nombre && <p className="error">{errors.nombre}</p>}
         </div>
@@ -97,25 +85,24 @@ const CreatePokemon = () => {
             type="text"
             id="imagen"
             name="imagen"
-            value={pokemonData.imagen}
-            onChange={handleInputChange}
+            onChange={handleTipoChange}
           />
-          {errors.imagen && <p className="error">{errors.imagen}</p>}
+          {Img && <p className="StateImg">{Img}</p>}
         </div>
         <div>
-  <label htmlFor="vida">Vida:</label>
-  <input
-    type="range"
-    id="vida"
-    name="vida"
-    min="1"
-    max="5"
-    step="1"
-    value={pokemonData.vida}
-    onChange={handleInputChange}
-  />
-  {pokemonData.vida}
-</div>
+          <label htmlFor="vida">Vida:</label>
+          <input
+            type="range"
+            id="vida"
+            name="vida"
+            min="1"
+            max="5"
+            step="1"
+            value={pokemonData.vida}
+            onChange={handleTipoChange}
+          />
+          {pokemonData.vida}
+        </div>
 <div>
   <label htmlFor="ataque">Ataque:</label>
   <input
@@ -126,7 +113,7 @@ const CreatePokemon = () => {
     max="5"
     step="1"
     value={pokemonData.ataque}
-    onChange={handleInputChange}
+  onChange={handleTipoChange}
   />
   {pokemonData.ataque}
 </div>
@@ -140,7 +127,7 @@ const CreatePokemon = () => {
     max="5"
     step="1"
     value={pokemonData.defensa}
-    onChange={handleInputChange}
+    onChange={handleTipoChange}
   />
   {pokemonData.defensa}
 </div>
@@ -154,7 +141,7 @@ const CreatePokemon = () => {
     max="5"
     step="1"
     value={pokemonData.velocidad}
-    onChange={handleInputChange}
+  onChange={handleTipoChange}
   />
   {pokemonData.velocidad}
 </div>
@@ -165,10 +152,10 @@ const CreatePokemon = () => {
     id="altura"
     name="altura"
     min="1"
-    max="5"
+    max="100"
     step="1"
     value={pokemonData.altura}
-    onChange={handleInputChange}
+  onChange={handleTipoChange}
   />
   {pokemonData.altura}
 </div>
@@ -182,13 +169,12 @@ const CreatePokemon = () => {
     max="5"
     step="1"
     value={pokemonData.peso}
-    onChange={handleInputChange}
+  onChange={handleTipoChange}
   />
   {pokemonData.peso}
 </div>
-
 <div>
-          <label htmlFor="tipos">Tipo:</label>
+          <label htmlFor="tipos">Tipos:</label>
           <select
             id="tipos"
             name="tipos"
@@ -201,6 +187,7 @@ const CreatePokemon = () => {
                 {tipo.name}
               </option>
             ))}
+            <option value="new type">Crea Nuevo Tipo...</option>
           </select>
           <div>
             <p>Tipos seleccionados:</p>
@@ -209,6 +196,12 @@ const CreatePokemon = () => {
                 <li key={index}>{tipo}</li>
               ))}
             </ul>
+            <button type="button" onClick={() => Delete(pokemonData, setPokemonData, setErrors, errors)}>
+              Quitar tipo
+            </button>
+            {errors.tipos.length > 0 && (
+              <p className="error">{errors.tipos[0]}</p>
+            )}
           </div>
         </div>
         <button type="submit" disabled={isSubmitDisabled}>

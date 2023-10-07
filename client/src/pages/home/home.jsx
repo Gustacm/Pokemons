@@ -8,7 +8,7 @@ import Paginado from '../../Componets/paginado/paginado';
 const Home = () => {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.allPokemons);
-  const itens_por_pagina = 2; 
+  const itens_por_pagina = 12; 
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {

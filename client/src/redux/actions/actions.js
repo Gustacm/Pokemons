@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ID_POKEMON, GET_Name_POKEMONS, GET_POKEMONS, GET_TYPE, RESET_POKEMON, RESET_POKEMON_DETAIL } from './type';
+import { GET_ID_POKEMON, GET_Name_POKEMONS, GET_POKEMONS, GET_TYPE, POST_POKEMON, RESET_POKEMON, RESET_POKEMON_DETAIL } from './type';
 
 
 
@@ -24,7 +24,6 @@ export function getName(name) {
     return async function (dispatch) {
       try {
         const respuesta = await axios.get(`http://localhost:3001/pokemons/name?name=${name}`);
-        console.log('Respuesta de la solicitud:', respuesta.data); 
         dispatch({
           type: GET_Name_POKEMONS,
           payload: respuesta.data
@@ -41,7 +40,6 @@ export function getId(id) {
   return async function (dispatch) {
     try {
       const respuesta = await axios.get(`http://localhost:3001/pokemons/${id}`);
-      console.log('Respuesta de la solicitud:', respuesta.data); 
       dispatch({
         type: GET_ID_POKEMON,
         payload: respuesta.data
@@ -81,13 +79,28 @@ export function getId(id) {
     return async function (dispatch) {
       try {
         const respuesta = await axios.get(`http://localhost:3001/types`);
-        console.log('Respuesta de la solicitud:', respuesta.data); 
         dispatch({
           type: GET_TYPE,
           payload: respuesta.data
         });
       } catch (error) {
         alert("EROR");
+      }
+    };
+  }
+  
+
+  export function postPokemons(data) {
+    return async function (dispatch) {
+      try {
+        const respuesta = await axios.post('http://localhost:3001/pokemons', data); 
+        console.log(respuesta.data);
+        dispatch({
+          type: POST_POKEMON,
+          payload: respuesta.data
+        });
+      } catch (error) {
+        console.error('Error:', error); 
       }
     };
   }

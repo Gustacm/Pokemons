@@ -4,4 +4,4 @@ export const GET_ID_POKEMON = 'GET_ID_POKEMON';
 export const RESET_POKEMON_DETAIL = 'RESET_POKEMON_DETAIL';
 export const RESET_POKEMON = 'RESET_POKEMON';
 export const GET_TYPE = 'GET_TYPE';
-
+export const POST_POKEMON = 'POST_POKEMON';

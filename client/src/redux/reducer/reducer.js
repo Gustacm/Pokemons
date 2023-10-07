@@ -1,61 +1,58 @@
-
-
 let initialState = {
-    allPokemons: [],
-    copyAllPokemons: [],
-    pokemonDetail: [],
-    typeState: [],
-  };
-  
-  const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case 'GET_POKEMONS':
-        return {
-          ...state,
-          allPokemons: action.payload,
-          copyAllPokemons: action.payload,
-        };
-  
-      case 'GET_Name_POKEMONS':
-        return {
-          ...state,
-          allPokemons: action.payload,
-        };
+  allPokemons: [],
+  copyAllPokemons: [],
+  pokemonDetail: [],
+  typeState: [],
+};
 
-              case 'GET_ID_POKEMON':
-        return {
-          ...state,
-          pokemonDetail: action.payload,
-        };
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'GET_POKEMONS':
+      return {
+        ...state,
+        allPokemons: action.payload.map(pokemon => ({
+          ...pokemon,
+          name: pokemon.name.toLowerCase(), // Guardar el nombre en minúsculas
+        })),
+        copyAllPokemons: action.payload,
+      };
 
-        case 'RESET_POKEMON_DETAIL':
-          return {
-            ...state,
-            pokemonDetail: null, 
-          };
+    case 'GET_Name_POKEMONS':
+      return {
+        ...state,
+        allPokemons: action.payload.map(pokemon => ({
+          ...pokemon,
+          name: pokemon.name.toLowerCase(), // Guardar el nombre en minúsculas
+        })),
+      };
 
-          case 'RESET_POKEMON':
-            return {
-              ...state,
-              allPokemons:state.copyAllPokemons,
-            };
+    case 'GET_ID_POKEMON':
+      return {
+        ...state,
+        pokemonDetail: action.payload,
+      };
 
-            case 'GET_TYPE':
-              return {
-                ...state,
-                typeState: action.payload,
-              }
-            
+    case 'RESET_POKEMON_DETAIL':
+      return {
+        ...state,
+        pokemonDetail: null,
+      };
 
+    case 'RESET_POKEMON':
+      return {
+        ...state,
+        allPokemons: state.copyAllPokemons,
+      };
 
-  
-      default:
-        return state;
+    case 'GET_TYPE':
+      return {
+        ...state,
+        typeState: action.payload,
+      };
 
-        
-    
-    }
-  };
-  
-  export default rootReducer;
-  
+    default:
+      return state;
+  }
+};
+
+export default rootReducer;
