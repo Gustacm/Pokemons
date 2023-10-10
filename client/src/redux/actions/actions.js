@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ID_POKEMON, GET_Name_POKEMONS, GET_POKEMONS, GET_TYPE, POST_POKEMON, RESET_POKEMON, RESET_POKEMON_DETAIL } from './type';
+import { FILTER_AZ, FILTER_ORIGEN, FILTER_TYPE, GET_ID_POKEMON, GET_Name_POKEMONS, GET_POKEMONS, GET_TYPE, POST_POKEMON, RESET_POKEMON, RESET_POKEMON_DETAIL } from './type';
 
 
 
@@ -13,8 +13,9 @@ export function getPokemons (){
                 payload:respuesta.data
             })
             
-        } catch (error) {
-            alert("Estatus 404")
+          }catch (error) {
+              console.error('Error en la solicitud POST:', error);
+            
             
         }
     }
@@ -24,6 +25,7 @@ export function getName(name) {
     return async function (dispatch) {
       try {
         const respuesta = await axios.get(`http://localhost:3001/pokemons/name?name=${name}`);
+        console.log("recibo",respuesta.data);
         dispatch({
           type: GET_Name_POKEMONS,
           payload: respuesta.data
@@ -93,14 +95,57 @@ export function getId(id) {
   export function postPokemons(data) {
     return async function (dispatch) {
       try {
-        const respuesta = await axios.post('http://localhost:3001/pokemons', data); 
-        console.log(respuesta.data);
+        const respuesta = await axios.post('http://localhost:3001/pokemons/', data);
         dispatch({
           type: POST_POKEMON,
           payload: respuesta.data
         });
       } catch (error) {
         console.error('Error:', error); 
+      }
+    };
+  }
+  
+
+  export function filterTypeAc(type) {
+    return async function (dispatch) {
+      try {
+        dispatch({
+          type: FILTER_TYPE,
+          payload: type,
+        });
+      } catch (error) {
+        alert("Error");
+      }
+    };
+  }
+
+  export function filterAZ(clave) {
+    return async function (dispatch) {
+      console.log(clave);
+      try {
+        dispatch({
+          type: FILTER_AZ,
+          payload:clave,
+        });
+      } catch (error) {
+        alert("Error al filtar");
+      }
+    };
+  }
+
+
+
+  export function originAC(clave) {
+    return async function (dispatch) {
+      console.log(clave);
+      try {
+        dispatch({
+          type: FILTER_ORIGEN,
+          payload:clave,
+        });
+      } catch (error) {
+        alert("Error al filtar");
       }
     };
   }

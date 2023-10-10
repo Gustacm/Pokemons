@@ -1,5 +1,5 @@
 const axios = require ("axios");
-const {Pokemon} = require("../db");
+const {Pokemon,Type } = require("../db");
 
 
 
@@ -24,11 +24,46 @@ const controllersIdGetPokemons = async(id)=>{
         return infoPokemon;
     }
 
-const constrollesIdDbgetpokemons= async (id) => {
-    const respuesta = await Pokemon.findByPk(id);
-    return respuesta
-
-}
+    const constrollesIdDbgetpokemons = async (id) => {
+        try {
+          const respuesta = await Pokemon.findByPk(id, {
+            include: [
+              {
+                model: Type,
+                attributes: ["name"],
+                through: {
+                  attributes: [],
+                },
+              },
+            ],
+          });
+      
+          if (!respuesta) {
+            throw new Error(`No se encontró un Pokémon con ID ${id}`);
+          }
+      
+          const pokemonData = {
+            id: respuesta.id,
+            name: respuesta.name,
+            image: [respuesta.Imagen],
+            Vida: parseInt(respuesta.Vida),
+            Ataque: parseInt(respuesta.Ataque),
+            Defensa: parseInt(respuesta.Defensa),
+            Velocidad: parseInt(respuesta.Velocidad),
+            Altura: parseFloat(respuesta.Altura),
+            Peso: parseFloat(respuesta.Peso),
+            Type: respuesta.Types.map((type) => type.name),
+          };
+      
+          return pokemonData;
+        } catch (error) {
+          console.error(`Error al obtener los datos del Pokémon con ID ${id} de la base de datos:`, error);
+          throw error;
+        }
+      };
+      
+      
+      
 
 
 

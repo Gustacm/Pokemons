@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getType, postPokemons } from '../../redux/actions/actions';
-
+import { getType, postPokemons} from '../../redux/actions/actions';
 import Delete from './handlers/handleDeleteType';
 import Cambios from './handlers/handleCambios';
 
@@ -39,28 +38,27 @@ const CreatePokemon = () => {
 
   const [Img,SetImg] = useState([])
 
-  const convercion = {
-    nombre: pokemonData.nombre.toLowerCase(),
-    imagen: pokemonData.imagen,
-    vida: pokemonData.vida,
-    ataque: pokemonData.ataque,
-    defensa: pokemonData.defensa,
-    velocidad: pokemonData.velocidad,
-    altura: pokemonData.altura,
-    peso: pokemonData.peso,
-    type: [...pokemonData.tipos], 
+  const data = {
+    name: pokemonData.nombre.toLowerCase(),
+    Imagen: pokemonData.imagen,
+    Vida: pokemonData.vida,
+    Ataque: pokemonData.ataque,
+    Defensa: pokemonData.defensa,
+    Velocidad: pokemonData.velocidad,
+    Altura: pokemonData.altura,
+    Peso: pokemonData.peso,
+    typeNames: [...pokemonData.tipos],
   };
+  
   
   
 
   const isSubmitDisabled = Object.values(errors).some((error) => error !== '');
-   const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    postPokemons(convercion)
-  
-    console.log(convercion);
+     dispatch(postPokemons(data)); 
   };
-
+  
 
   return (
     <div>

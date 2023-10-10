@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getName, resetPokemon } from '../../redux/actions/actions';
 import { Link } from 'react-router-dom'; 
 
+
 const Navbar = () => {
   const [state, setState] = useState({ name: "" });
   const [error, setError] = useState([]);
@@ -25,6 +26,7 @@ const Navbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(getName(state.name));
+    console.log("envio",state.name);
   };
 
   return (

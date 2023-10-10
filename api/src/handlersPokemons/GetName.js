@@ -2,30 +2,33 @@ const sequelize = require('sequelize');
 const { constrollesNameDbgetpokemons, controllersNameGetPokemons } = require('../controllersPokemons/GetName');
 
 const handlergetNamePokemons = async (req, res) => {
-    const {name} = req.query;
+  const { name } = req.query;
 
-  
-    try {
-      const apiRespuesta = await controllersNameGetPokemons(name);
-      const DbRespuesta = await constrollesNameDbgetpokemons(name);
-      
+  try {
+    const DbRespuesta = await constrollesNameDbgetpokemons(name);
     let combinedResponse = [];
 
-    if (apiRespuesta) {
-      combinedResponse.push(apiRespuesta);
+    if (DbRespuesta && DbRespuesta.length > 0) {
+      combinedResponse = combinedResponse.concat(DbRespuesta);
     }
 
-    if (DbRespuesta) {
-      combinedResponse.push(DbRespuesta);
+    try {
+      const apiRespuesta = await controllersNameGetPokemons(name);
+      if (apiRespuesta) {
+        combinedResponse = combinedResponse.concat(apiRespuesta);
+      }
+    } catch (apiError) {
+      console.error("Error al buscar en la API:", apiError);
     }
-  
+
     res.status(200).send(combinedResponse);
-    } catch (error) {
-      res.status(506).json({ error: error.message });
-    }
-  };
-  
+  } catch (error) {
+    res.status(500).json({ error: error.message, stack: error.stack });
+  }
+};
 
-module.exports={
-    handlergetNamePokemons
-}
+
+module.exports = {
+  handlergetNamePokemons,
+};
+

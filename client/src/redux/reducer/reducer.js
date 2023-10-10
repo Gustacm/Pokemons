@@ -1,3 +1,8 @@
+import handleFilter from "./handler/hadlerFiltroType";
+import handleAz from "./handler/handleAz";
+import handleOrigen from "./handler/handleOrigen";
+
+
 let initialState = {
   allPokemons: [],
   copyAllPokemons: [],
@@ -10,19 +15,17 @@ const rootReducer = (state = initialState, action) => {
     case 'GET_POKEMONS':
       return {
         ...state,
-        allPokemons: action.payload.map(pokemon => ({
-          ...pokemon,
-          name: pokemon.name.toLowerCase(), // Guardar el nombre en minúsculas
-        })),
-        copyAllPokemons: action.payload,
+        allPokemons: action.payload,
+        copyAllPokemons: [...action.payload], 
       };
+    
 
     case 'GET_Name_POKEMONS':
       return {
         ...state,
         allPokemons: action.payload.map(pokemon => ({
           ...pokemon,
-          name: pokemon.name.toLowerCase(), // Guardar el nombre en minúsculas
+          name: pokemon.name.toLowerCase(), 
         })),
       };
 
@@ -49,6 +52,37 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         typeState: action.payload,
       };
+
+      case 'POST_POKEMON':
+        return {
+          ...state,
+          allPokemons: [...state.allPokemons, action.payload],
+        };
+
+        case 'FILTER_TYPE':
+          const filtrado = handleFilter(state.allPokemons,state.copyAllPokemons, action.payload);
+          return {
+            ...state,
+            allPokemons:filtrado,
+          };
+
+          case 'FILTER_AZ':
+            const filtradoAz = handleAz(state.allPokemons, state.copyAllPokemons, action.payload);
+            return {
+              ...state,
+              allPokemons:filtradoAz,
+            };
+
+            case 'FILTER_ORIGEN':
+              const filtradoOrigen = handleOrigen(state.allPokemons, state.copyAllPokemons, action.payload);
+              return {
+                ...state,
+                allPokemons:filtradoOrigen,
+              };
+          
+        
+
+        
 
     default:
       return state;

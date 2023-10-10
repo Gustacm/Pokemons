@@ -41,6 +41,7 @@ module.exports = (sequelize) => {
       type: DataTypes.DOUBLE() ,
       allowNull:false,
     },
+
   },
   {freezeTableName:true ,timestamps:false}
   );
