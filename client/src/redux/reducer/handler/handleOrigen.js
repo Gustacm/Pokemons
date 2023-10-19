@@ -7,7 +7,7 @@ export const reiniciar = (back)=>{
 
 
 const handleOrigen = (estado, back, clave) => {
-    const copiastado= [...back];
+    const copiastado= [...estado];
     const api = copiastado.filter(x => /^\d+$/.test(x.id));
     const db = copiastado.filter(x => !/^\d+$/.test(x.id));
 

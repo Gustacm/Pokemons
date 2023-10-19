@@ -1,0 +1,90 @@
+.pokemon-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2001;
+  }
+  
+  .pokemon-detail-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://www.wallpapertip.com/wmimgs/166-1669687_mudkip-evolution-shiny.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  .pokemon-detail-card {
+    background-color: #682626a8;
+    border: 1px solid #02020233;
+    padding: 12px;
+    max-width: 500px;
+    width: 80%;
+    border-radius: 9px;
+    box-shadow: 10px 0 0px rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white; /* Color de texto blanco */
+  
+    .d-button {
+      order: 1; /* Cambiado el orden a 1 para mover a la izquierda */
+      margin-right: 10px;
+    }
+  
+    .i-button {
+      order: 3; /* Cambiado el orden a 3 para mover a la derecha */
+      margin-left: 10px;
+    }
+  
+    .home-button {
+      background-color: rgba(255, 0, 0, 0.308);
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      top: 40px;
+      left: 90px;
+      color: white;
+    }
+  
+    height: auto;
+    max-height: 85vh;
+    overflow: auto;
+  
+    .texto p {
+      margin: 10px 0;
+    }
+  }
+  
+  .pokemon-detail-card img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+  }
+  
+  .delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .delete-button:hover {
+    background-color: darkred;
+  }
+  

@@ -1,5 +1,9 @@
-
 const Paginado = ({ currentPage, totalPages, onPageChange }) => {
+  if (totalPages <= 1) {
+
+    return null;
+  }
+
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
@@ -12,10 +16,7 @@ const Paginado = ({ currentPage, totalPages, onPageChange }) => {
         >
           {page}
         </button>
-
       ))}
-
-      
     </div>
   );
 };

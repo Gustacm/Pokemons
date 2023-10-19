@@ -1,0 +1,106 @@
+
+.landing {
+    background-image: url('https://media2.giphy.com/media/aOiiut0WA77nYsDddq/giphy.gif');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    
+}
+
+.by {
+    position: absolute;
+    bottom: 0; 
+    left: 10; 
+    z-index: 2;
+    width: 130px;
+    height: 45px;
+    display: flex;
+    justify-content: flex-start; 
+}
+
+.contenedor {
+    z-index: 2; 
+    background: linear-gradient(rgba(0, 0, 0, 0.792), rgba(0, 0, 0, 0));
+    width: 700px;
+    height: 450px;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7%;
+    padding: 20px
+
+}
+
+
+
+.titulo {
+  background: -webkit-linear-gradient(rgb(0, 16, 235), rgba(0, 0, 0, 0.533));
+  background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 120px;
+    margin-bottom: 0px;
+    margin-top: -30px;
+    font-family: 'Pokemon Solid', sans-serif;
+    position: relative;
+  }
+  
+  .titulo::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ff0000; 
+    text-shadow: 3px 0px 0 #f1dd06, 6px 0px 0 #000593, 9px 0px 0 #10008b99, 12px 0px 0 #000000ba, 15px 0px 0 #0000001b; 
+    z-index: 1;
+  }
+  .Buton {
+      display: inline-block;
+      border-radius: 5px;
+      background: linear-gradient(to bottom, rgba(255, 0, 0, 0.7), rgba(140, 9, 9, 0.17)); 
+      border: none;
+      text-align: center;
+      font-size: 28px;
+      padding: 10px;
+      width: 150px;
+      transition: all 0.7s;
+      cursor: pointer;
+      margin: 4px;
+    
+  }
+
+
+.Buton span {
+    color: #f2ff00;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    font-family: 'Pokemon Solid', sans-serif;
+    -webkit-text-stroke: 1.5px rgb(33, 33, 156); 
+    letter-spacing: 6px; 
+  }
+  
+  
+  .Buton span:after {
+    content: '�';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .Buton:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .botones {
+    margin-top: -170px; 
+}

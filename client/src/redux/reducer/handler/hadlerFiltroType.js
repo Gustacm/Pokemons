@@ -4,7 +4,6 @@ const handleFilter = (estado,back,tipoFiltrado) => {
         return back}
 
         const filtrado = estado.filter((pokemon) => {
-            // Verificar si al menos uno de los tipos seleccionados está en el array de tipos del pokemon
             return tipoFiltrado.some((tipo) => pokemon.Type.includes(tipo));
           });
         
@@ -16,7 +15,5 @@ const handleFilter = (estado,back,tipoFiltrado) => {
 
   
   export default handleFilter;
-  
-              // const filteredPokemons = estado.filter((pokemon) => {
-              //   return pokemon.Type.includes(tipoFiltrado);})
+
   

@@ -1,0 +1,40 @@
+
+.origen-container {
+    margin: 10px;
+  }
+  
+  .origen-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    appearance: none;
+  }
+  
+
+  .origen-button {
+    background-color: #001eff;
+    color: #fff;
+    padding: 4px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+  .origen-list {
+    list-style: none;
+    padding: 0;
+    /* Puedes agregar estilos adicionales si necesitas una lista aquí */
+  }
+  
+  /* Estilos para los tipos seleccionados (si es necesario) */
+  .origen-selected-type {
+    margin: 5px;
+    background-color: #f0f0f0;
+    padding: 3px 6px;
+    border-radius: 5px;
+    /* Puedes personalizar el estilo de los tipos seleccionados si es necesario */
+  }
+  

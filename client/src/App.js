@@ -10,18 +10,26 @@ import Navbar from './Componets/Navbar/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Route path={"*"} component={Navbar} />
-      <Switch>
-        <Route path="/landing" component={landing}/>
-        <Route path="/home" component={home}/>
-        <Route path="/detail/:id" component={DETAIL} />
-        <Route path="/create" component={create}/>
-        <Route path="/about" component={about}/>
-        </Switch>
-      </BrowserRouter>
-    </div>
+<div className="App">
+  <BrowserRouter>
+    <Route
+      render={({ location }) => {
+
+        if (location.pathname !== '/landing') {
+          return <Navbar />;
+        }
+        return null; 
+      }}
+    />
+    <Switch>
+      <Route path="/landing" component={landing} />
+      <Route path="/home" component={home} />
+      <Route path="/detail/:id" component={DETAIL} />
+      <Route path="/create" component={create} />
+      <Route path="/about" component={about} />
+    </Switch>
+  </BrowserRouter>
+</div>
   );
 }
 

@@ -8,6 +8,7 @@ let initialState = {
   copyAllPokemons: [],
   pokemonDetail: [],
   typeState: [],
+  reinicio:0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -26,7 +27,8 @@ const rootReducer = (state = initialState, action) => {
         allPokemons: action.payload.map(pokemon => ({
           ...pokemon,
           name: pokemon.name.toLowerCase(), 
-        })),
+          
+        })),reinicio:1
       };
 
     case 'GET_ID_POKEMON':
@@ -64,6 +66,7 @@ const rootReducer = (state = initialState, action) => {
           return {
             ...state,
             allPokemons:filtrado,
+            reinicio:1
           };
 
           case 'FILTER_AZ':
@@ -71,6 +74,7 @@ const rootReducer = (state = initialState, action) => {
             return {
               ...state,
               allPokemons:filtradoAz,
+              reinicio:1
             };
 
             case 'FILTER_ORIGEN':
@@ -78,8 +82,27 @@ const rootReducer = (state = initialState, action) => {
               return {
                 ...state,
                 allPokemons:filtradoOrigen,
+                reinicio:1
               };
           
+              case 'FILTER_CLEAR':
+                return {
+                  ...state,
+                  allPokemons:state.copyAllPokemons,
+                  reinicio:0,
+                };
+
+                case 'FILTER_R':
+                  return {
+                    ...state,
+                    reinicio:0,
+
+
+                  };
+                // case 'GET_DELETEDB':
+                //   return {
+                //     ...state
+                //                   };
         
 
         

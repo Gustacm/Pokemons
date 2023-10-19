@@ -1,9 +1,10 @@
 import React from 'react';
 import Card from '../Card/Card';
+import './Cards.css';
 
 const Cards = ({ info }) => {
   return (
-    <div>
+    <div className='cards'>
       {info && info.map((p) => (
         <Card
           key={p.id}

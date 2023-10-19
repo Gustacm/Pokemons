@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { FILTER_AZ, FILTER_ORIGEN, FILTER_TYPE, GET_ID_POKEMON, GET_Name_POKEMONS, GET_POKEMONS, GET_TYPE, POST_POKEMON, RESET_POKEMON, RESET_POKEMON_DETAIL } from './type';
+import { FILTER_AZ, FILTER_CLEAR, FILTER_ORIGEN, FILTER_R, FILTER_TYPE, GET_ID_POKEMON, GET_Name_POKEMONS, GET_POKEMONS, GET_TYPE, POST_POKEMON, RESET_POKEMON, RESET_POKEMON_DETAIL } from './type';
+
 
 
 
@@ -108,7 +109,9 @@ export function getId(id) {
   
 
   export function filterTypeAc(type) {
+    console.log("click action filter");
     return async function (dispatch) {
+
       try {
         dispatch({
           type: FILTER_TYPE,
@@ -122,7 +125,7 @@ export function getId(id) {
 
   export function filterAZ(clave) {
     return async function (dispatch) {
-      console.log(clave);
+
       try {
         dispatch({
           type: FILTER_AZ,
@@ -138,7 +141,6 @@ export function getId(id) {
 
   export function originAC(clave) {
     return async function (dispatch) {
-      console.log(clave);
       try {
         dispatch({
           type: FILTER_ORIGEN,
@@ -149,6 +151,57 @@ export function getId(id) {
       }
     };
   }
+
+  
+  
+  
+  
+  export function Clear() {
+    return async function (dispatch) {
+      try {
+        dispatch({
+          type: FILTER_CLEAR,
+        });
+      } catch (error) {
+        alert("Error al filtar");
+      }
+    };
+  }
+  
+  export function accionDeRegreso() {
+    return async function (dispatch) {
+      try {
+        dispatch({
+          type: FILTER_R,
+        });
+      } catch (error) {
+      }
+    };
+  }
+
+
+  // export function deleteDB(id) {
+  //     console.log("id",id);
+  //   return async function (dispatch) {
+  //     try {
+  //       const respuesta = await axios.delete(`http://localhost:3001/pokemons/${id}`);
+  //       console.log("respueta Delete",respuesta.data);
+  //       dispatch({
+  //         type: GET_DELETEDB,
+  //         payload: respuesta.data
+  //       });
+  //     } catch (error) {
+  //       alert("Error PARA ELIMINAR");
+  //     }
+  //   };
+  // }
+
+
+ 
+
+  
+
+
   
 
 

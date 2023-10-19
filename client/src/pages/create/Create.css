@@ -1,0 +1,67 @@
+.create-pokemon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2001;
+  }
+  
+  .create-pokemon-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-image: url('URL_DE_TU_IMAGEN_DE_FONDO.jpg');  */
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  .create-pokemon-container h2 {
+    color: white; /* Color de texto blanco */
+  }
+  
+  .create-pokemon-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .create-pokemon-form label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .create-pokemon-form input[type="text"],
+  .create-pokemon-form select,
+  .create-pokemon-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .create-pokemon-form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .create-pokemon-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .create-pokemon-form .error {
+    color: red;
+  }

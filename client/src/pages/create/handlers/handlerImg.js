@@ -1,5 +1,5 @@
 const imgDefault = (name, pokemonData, setPokemonData, errors, Img, SetImg, value) => {
-    const imgDefaultUrl = 'https://w0.peakpx.com/wallpaper/925/958/HD-wallpaper-pokeball.jpg';
+    const imgDefaultUrl = 'https://www.apkonline.net/imagescropped/pokemonhdwallpaperlockscreenicon128.jpg.webp';
   
     if(name==="imagen"){
 

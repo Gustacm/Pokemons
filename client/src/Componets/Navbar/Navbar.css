@@ -1,0 +1,105 @@
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0px; 
+  z-index: 0;
+}
+
+
+
+
+.imagen {
+  max-width: 40%;
+  height: auto;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+
+
+
+.search-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-button {
+  display: inline-block;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(255, 0, 0, 0.7), rgba(140, 9, 9, 0.17));
+  border: none;
+  text-align: center;
+  font-size: 10px;
+  padding: 6px;
+  width: 90px;
+  transition: all 0.7s;
+  cursor: pointer;
+  margin: 4px;
+  color: #fff;
+}
+
+.error-message {
+  color: red;
+}
+
+
+
+.menu {
+  display: flex;
+  padding: 0;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(255, 0, 0, 0.7), rgba(140, 9, 9, 0.17));
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  padding: 9px;
+  width: 100px;
+  transition: all 0.7s;
+  cursor: pointer;
+  margin-right: 10px; 
+}
+
+.button:last-child {
+  margin-right: 10; 
+}
+
+.button span {
+  color: #ecb81c;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-family: 'Pokemon Solid', sans-serif;
+  -webkit-text-stroke: 1.5px rgba(19, 19, 152, 0.618);
+  letter-spacing: 6px;
+}
+
+.button span:after {
+  content: ' ';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -50px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}

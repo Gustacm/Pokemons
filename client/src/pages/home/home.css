@@ -1,0 +1,36 @@
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 70px 20px 20px; 
+  background-image: url('https://png.pngtree.com/background/20230612/original/pngtree-group-of-pokemons-are-gathered-in-the-forest-picture-image_3181302.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.FilterContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  width: 0%; 
+}
+
+.Paginado {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.filtros {
+  height: 100px; 
+  margin-top: 0px; 
+  margin-left: 1100px; 
+}
+
+.reset-button {
+  height: 25px;
+  padding: 0px 3px;
+  font-size: 10px; 
+}

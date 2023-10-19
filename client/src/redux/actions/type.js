@@ -8,3 +8,6 @@ export const POST_POKEMON = 'POST_POKEMON';
 export const FILTER_TYPE = 'FILTER_TYPE';
 export const FILTER_AZ = 'FILTER_AZ';
 export const FILTER_ORIGEN = 'FILTER_ORIGEN';
+export const FILTER_CLEAR = 'FILTER_CLEAR';
+export const GET_DELETEDB = 'GET_DELETEDB';
+export const FILTER_R = 'FILTER_R';

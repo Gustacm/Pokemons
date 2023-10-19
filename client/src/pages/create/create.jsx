@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getType, postPokemons} from '../../redux/actions/actions';
 import Delete from './handlers/handleDeleteType';
 import Cambios from './handlers/handleCambios';
+import "./Create.css"
+
 
 
 const CreatePokemon = () => {
@@ -21,7 +23,7 @@ const CreatePokemon = () => {
   
   const [pokemonData, setPokemonData] = useState({
     nombre: '',
-    imagen: 'https://w0.peakpx.com/wallpaper/740/298/HD-wallpaper-pokemon-game-poke-ball-red-simplistic.jpg',
+    imagen: 'https://www.apkonline.net/imagescropped/pokemonhdwallpaperlockscreenicon128.jpg.webp',
     vida: '1',
     ataque: '1',
     defensa: '1',
@@ -56,7 +58,13 @@ const CreatePokemon = () => {
   const isSubmitDisabled = Object.values(errors).some((error) => error !== '');
   const handleSubmit = async (e) => {
     e.preventDefault();
-     dispatch(postPokemons(data)); 
+    dispatch(postPokemons(data));
+
+
+    alert("El Pokémon se ha creado con éxito.");
+
+   
+    window.location.reload();
   };
   
 
@@ -67,7 +75,7 @@ const CreatePokemon = () => {
         <img src={pokemonData.imagen} alt="pokemon" width="200" height="200" />
 
         <div>
-          <label htmlFor="nombre">Nombre:</label>
+          <label classename="nombre">Nombre:</label>
           <input
             type="text"
             id="nombre"
@@ -78,7 +86,7 @@ const CreatePokemon = () => {
           {errors.nombre && <p className="error">{errors.nombre}</p>}
         </div>
         <div>
-          <label htmlFor="imagen">Imagen:</label>
+          <label classename="imagen">Imagen:</label>
           <input
             type="text"
             id="imagen"
@@ -88,7 +96,7 @@ const CreatePokemon = () => {
           {Img && <p className="StateImg">{Img}</p>}
         </div>
         <div>
-          <label htmlFor="vida">Vida:</label>
+          <label className="vida">Vida:</label>
           <input
             type="range"
             id="vida"
@@ -102,7 +110,7 @@ const CreatePokemon = () => {
           {pokemonData.vida}
         </div>
 <div>
-  <label htmlFor="ataque">Ataque:</label>
+  <label className="ataque">Ataque:</label>
   <input
     type="range"
     id="ataque"
@@ -116,7 +124,7 @@ const CreatePokemon = () => {
   {pokemonData.ataque}
 </div>
 <div>
-  <label htmlFor="defensa">Defensa:</label>
+  <label className="defensa">Defensa:</label>
   <input
     type="range"
     id="defensa"
@@ -130,7 +138,7 @@ const CreatePokemon = () => {
   {pokemonData.defensa}
 </div>
 <div>
-  <label htmlFor="velocidad">Velocidad:</label>
+  <label className="velocidad">Velocidad:</label>
   <input
     type="range"
     id="velocidad"
@@ -144,7 +152,7 @@ const CreatePokemon = () => {
   {pokemonData.velocidad}
 </div>
 <div>
-  <label htmlFor="altura">Altura:</label>
+  <label className="altura">Altura:</label>
   <input
     type="range"
     id="altura"
@@ -158,7 +166,7 @@ const CreatePokemon = () => {
   {pokemonData.altura}
 </div>
 <div>
-  <label htmlFor="peso">Peso:</label>
+  <label className="peso">Peso:</label>
   <input
     type="range"
     id="peso"
@@ -172,7 +180,7 @@ const CreatePokemon = () => {
   {pokemonData.peso}
 </div>
 <div>
-          <label htmlFor="tipos">Tipos:</label>
+          <label className="tipos">Tipos:</label>
           <select
             id="tipos"
             name="tipos"

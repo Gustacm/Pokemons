@@ -8,8 +8,8 @@ const { handlerPostPokemons } = require("../../handlersPokemons/Post");
 const pokemonsRouter = Router();
 
 pokemonsRouter.get("/name", handlergetNamePokemons);
-pokemonsRouter.get("/:idPokemon", handlerIdGetPokemons);
 pokemonsRouter.delete("/:idPokemon", handlerIdGetPokemons);
+pokemonsRouter.get("/:idPokemon", handlerIdGetPokemons);
 pokemonsRouter.get("/", handlergetPokemons);
 pokemonsRouter.post("/",handlerPostPokemons);
 

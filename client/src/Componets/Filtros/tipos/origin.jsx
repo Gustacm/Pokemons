@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { originAC } from '../../../redux/actions/actions';
+import "./origen.css"; 
 
 const Origen = () => {
   const dispatch = useDispatch();
@@ -12,25 +13,25 @@ const Origen = () => {
   }
 
   const handleClick = () => {
-    dispatch(originAC(clave)); 
-  };
-
+    dispatch(originAC(clave))}
   return (
-    <div>
+    <div className="origen-container"> 
       <select
-        id="origenSelect" // Cambia el id a uno único, por ejemplo, "origenSelect"
+        id="origenSelect"
         name="tipos"
         onChange={selec}
         value={clave} 
+        className="origen-select" 
       >
         <option value="Api">Api</option>
         <option value="DB">Creados</option>
       </select>
-      <button onClick={handleClick}>Ordenar</button>
-      <ul>
+      <button onClick={handleClick} className="origen-button">Ordenar</button> {/* Agrega una clase al botón */}
+      <ul className="origen-list"> {/* Agrega una clase a la lista si es necesario */}
       </ul>
     </div>
   );
 };
 
 export default Origen;
+

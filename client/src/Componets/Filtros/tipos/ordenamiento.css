@@ -1,0 +1,37 @@
+.ordenamiento-container {
+    margin: 10px;
+  }
+  
+  .ordenamiento-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  
+  .ordenamiento-button {
+    background-color: #0033ff;
+    color: #fff;
+    padding: 4px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .ordenamiento-list {
+    list-style: none;
+    padding: 0;
+
+  }
+  
+  .ordenamiento-ordered-element {
+    margin: 5px;
+    background-color: #f0f0f0;
+    padding: 3px 6px;
+    border-radius: 5px;
+
+  }
+  
