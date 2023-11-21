@@ -1,17 +1,16 @@
 import React from 'react';
 import Card from '../Card/Card';
-import './Cards.css';
 
 const Cards = ({ info }) => {
   return (
-    <div className='cards'>
-      {info && info.map((p) => (
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4'>
+      {info && info.map((pokemon) => (
         <Card
-          key={p.id}
-          id={p.id}
-          name={p.name}
-          img={p.image[0]}
-          types={p.Type}
+          key={pokemon.id}
+          id={pokemon.id}
+          name={pokemon.name}
+          img={pokemon.image[0]}
+          types={pokemon.Type}
         />
       ))}
     </div>

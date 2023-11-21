@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import FilterType from '../../Componets/Filtros/tipos/tipos.jsx';
 import Ordenamiento from '../../Componets/Filtros/tipos/odenamiento';
 import Origen from '../../Componets/Filtros/tipos/origin';
-import './Navbar.css';
 
 const Navbar = () => {
   const [state, setState] = useState({ name: "" });
@@ -32,41 +31,49 @@ const Navbar = () => {
     console.log("envío", state.name);
   };
 
-  return (
-    <nav className="navbar">
+ return (
+    <nav className="navbar bg-gray-800 text-white p-4 flex justify-between items-center">
       <div className="navbar-left">
-        <ul className="menu">
-          <li><button className="button"><Link to="/home"><span>Home</span></Link></button></li>
-          <li><button className="button"><Link to="/create"><span>Crear</span></Link></button></li>
-          <li><button className="button"><Link to="/landing"><span>Landing</span></Link></button></li>
+        <ul className="flex space-x-4">
+          <li>
+            <button className="button">
+              <Link to="/home">
+                <span>Home</span>
+              </Link>
+            </button>
+          </li>
+          <li>
+            <button className="button">
+              <Link to="/create">
+                <span>Crear</span>
+              </Link>
+            </button>
+          </li>
+          <li>
+            <button className="button">
+              <Link to="/landing">
+                <span>Landing</span>
+              </Link>
+            </button>
+          </li>
         </ul>
       </div>
       <div className="navbar-middle">
-        <img src='/logo.png' alt='imagen' className='imagen' />
+        <img src="/logo.png" alt="imagen" className="imagen" />
       </div>
-      <div className="navbar-right">
-        {/* <button className="reset-button" onClick={() => dispatch(Clear())}>Limpiar</button> */}
-        {/* <div className="FilterComponent">
-          <FilterType />
-        </div>
-        <div className="FilterComponent">
-          <Ordenamiento />
-        </div>
-        <div className="FilterComponent">
-          <Origen />
-        </div> */}
+      <div className="navbar-right flex space-x-4 items-center">
         <form onSubmit={handleSearch} className="search-form">
           <input
             onChange={handleName}
             type="text"
             name="search"
             placeholder="Buscar Pokemons"
-            className="search-input"
+            className="search-input border border-gray-300 p-2 rounded-md"
             value={state.name}
           />
           <button
             type="submit"
-            className="search-button"
+            className="search-button bg-blue-500 text-white px-4 py-2 rounded-md"
             disabled={error.length > 0}
           >
             Buscar
@@ -75,7 +82,7 @@ const Navbar = () => {
         {error.length > 0 && (
           <div className="error-messages">
             {error.map((errorMsg, index) => (
-              <div key={index} className="error-message">
+              <div key={index} className="error-message text-red-500">
                 {errorMsg}
               </div>
             ))}

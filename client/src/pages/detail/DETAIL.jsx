@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getId, resetPokemonDetail } from '../../redux/actions/actions';
 import { withRouter } from 'react-router-dom';
-import './DETAIL.css'; // Importa tu archivo CSS aquí
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Detail = ({ match, history }) => {
@@ -10,24 +9,13 @@ const Detail = ({ match, history }) => {
   const { id } = match.params;
   const pokemons = useSelector((state) => state.pokemonDetail);
   const [img, setImg] = useState(0);
-  // const hasNumbersAndLetters = /[0-9]/.test(id) && /[a-zA-Z]/.test(id);
 
   const handleImg = () => {
-    if (img === 1) {
-      setImg(0);
-    } else {
-      setImg(1);
-    }
+    setImg((prevImg) => (prevImg === 1 ? 0 : 1));
   };
-
-  // const handleDelete = () => {
-  //   dispatch(deleteDB(id));
-  //   history.push('/home');
-  // };
 
   useEffect(() => {
     dispatch(getId(id));
-
 
     return () => {
       dispatch(resetPokemonDetail());
@@ -35,7 +23,7 @@ const Detail = ({ match, history }) => {
   }, [dispatch, id]);
 
   if (!pokemons) {
-    return <div>Cargando...</div>;
+    return <div className="flex items-center justify-center h-screen text-white">Cargando...</div>;
   }
 
   const {
@@ -50,40 +38,64 @@ const Detail = ({ match, history }) => {
     Type,
   } = pokemons;
 
-  return (
-    <div className="pokemon-detail-container">
-      <div className="pokemon-detail-card">
-        {image && image[img] && <img src={image[img]} alt={name} />}
-        <button  className="d-button" onClick={handleImg}>d</button> <button className='i-button' onClick={handleImg}>i</button>
-        <Link to="/home">
-          <button className="home-button">Ir a Home</button>
-        </Link>
-        <h2>{name}</h2>
+  const backgroundImageUrl =
+    'https://png.pngtree.com/background/20230612/original/pngtree-group-of-pokemons-are-gathered-in-the-forest-picture-image_3181302.jpg';
 
-        {/* {hasNumbersAndLetters && (
-          // <button className="delete-button" onClick={handleDelete}>
-          //   Eliminar
-          // </button>
-        )} */}
-        <div className='texto'>
-        <p>Vida: {Vida}</p>
-        <p>Ataque: {Ataque}</p>
-        <p>Defensa: {Defensa}</p>
-        {Velocidad && <p>Velocidad: {Velocidad}</p>}
-        {Altura && <p>Altura: {Altura}</p>}
-        {Peso && <p>Peso: {Peso}</p>}
-        <div className="pokemon-types">
-          <h3>Tipo(s):</h3>
-          <ul>
-            {Type && Type.map((type, index) => (
-              <li key={index}>{type}</li>
-            ))}
-          </ul>
-          </div>
+  return (
+    <div
+      className="bg-cover bg-center bg-no-repeat flex items-center justify-center h-screen"
+      style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+    >
+      <div className="bg-black bg-opacity-50 rounded-lg shadow p-8 max-w-4xl mx-auto text-white">
+        <span
+          className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+        ></span>
+
+        <div className="mb-8 text-center">
+          <h2 className="text-4xl font-bold mb-4">{name}</h2>
+          {image && image[img] && (
+            <img
+              alt={name}
+              src={image[img]}
+              className="h-48 w-48 rounded-lg object-cover shadow-sm mb-4 mx-auto"
+            />
+          )}
         </div>
+
+        <div className="text-base">
+          <p>
+            <span className="font-medium">Vida:</span> {Vida}
+          </p>
+          <p>
+            <span className="font-medium">Ataque:</span> {Ataque}
+          </p>
+          <p>
+            <span className="font-medium">Defensa:</span> {Defensa}
+          </p>
+          {Velocidad && <p><span className="font-medium">Velocidad:</span> {Velocidad}</p>}
+          {Altura && <p><span className="font-medium">Altura:</span> {Altura}</p>}
+          {Peso && <p><span className="font-medium">Peso:</span> {Peso}</p>}
+        </div>
+
+        <div className="mt-4 text-base">
+          <h3 className="font-semibold">Tipo(s):</h3>
+          <ul className="list-disc list-inside">
+            {Type &&
+              Type.map((type, index) => (
+                <li key={index} className="mb-1">
+                  {type}
+                </li>
+              ))}
+          </ul>
+        </div>
+
+        <Link to="/home" className="text-blue-500 hover:underline block mt-8 text-lg">
+          Ir a Home
+        </Link>
       </div>
     </div>
   );
 };
 
 export default withRouter(Detail);
+
