@@ -13,13 +13,6 @@ function App() {
 <div className="App">
   <BrowserRouter>
     <Route
-      // render={({ location }) => {
-
-      //   if (location.pathname !== '/landing') {
-      //     return <Navbar />;
-      //   }
-      //   return null; 
-      // }}
     />
     <Switch>
       <Route path="/landing" component={landing} />

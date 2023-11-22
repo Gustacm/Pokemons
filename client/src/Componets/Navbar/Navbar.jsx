@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
  return (
-    <nav className="navbar bg-gray-800 text-white p-4 flex justify-between items-center">
+    <nav className="navbar bg-gray-800 text-white p2 flex justify-between items-center">
       <div className="navbar-left">
         <ul className="flex space-x-4">
           <li>
@@ -59,8 +59,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-middle">
-        <img src="/logo.png" alt="imagen" className="imagen" />
-      </div>
+  <img src="/logo.png" alt="imagen" className="imagen" style={{ width: '230px' }} />
+</div>
       <div className="navbar-right flex space-x-4 items-center">
         <form onSubmit={handleSearch} className="search-form">
           <input
