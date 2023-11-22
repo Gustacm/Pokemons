@@ -68,7 +68,7 @@ const Navbar = () => {
             type="text"
             name="search"
             placeholder="Buscar Pokemons"
-            className="search-input border border-gray-300 p-2 rounded-md"
+            className="search-input border border-[#0000] p-2 rounded-md"
             value={state.name}
           />
           <button
